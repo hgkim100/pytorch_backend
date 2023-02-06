@@ -161,16 +161,16 @@ if (CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "aarch64")
 else()
   set(LIBS_ARCH "x86_64")
   set(LIBTORCH_LIBS
-    "libmkl_avx2.so.1"
-    "libmkl_avx512.so.1"
-    "libmkl_core.so.1"
-    "libmkl_def.so.1"
-    "libmkl_gnu_thread.so.1"
-    "libmkl_intel_lp64.so.1"
-    "libmkl_intel_thread.so.1"
-    "libmkl_rt.so.1"
-    "libmkl_sequential.so.1"
-    "libmkl_vml_def.so.1"
+    "libmkl_avx2.so.2"
+    "libmkl_avx512.so.2"
+    "libmkl_core.so.2"
+    "libmkl_def.so.2"
+    "libmkl_gnu_thread.so.2"
+    "libmkl_intel_lp64.so.2"
+    "libmkl_intel_thread.so.2"
+    "libmkl_rt.so.2"
+    "libmkl_sequential.so.2"
+    "libmkl_vml_def.so.2"
   )
 endif()
 set(OPENCV_LIBS
@@ -231,16 +231,16 @@ if (${TRITON_PYTORCH_DOCKER_BUILD})
     COMMAND docker cp -L pytorch_backend_ptlib:/usr/local/lib/libopencv_flann.so libopencv_flann.so
     COMMAND docker cp pytorch_backend_ptlib:/usr/lib/${LIBS_ARCH}-linux-gnu/libpng16.so.16.37.0 libpng16.so
     COMMAND docker cp pytorch_backend_ptlib:/usr/lib/${LIBS_ARCH}-linux-gnu/libjpeg.so.8.2.2 libjpeg.so
-    COMMAND /bin/sh -c "if [ -f libmkl_def.so.1 ]; then patchelf --add-needed libmkl_gnu_thread.so.1 libmkl_def.so.1; fi"
-    COMMAND /bin/sh -c "if [ -f libmkl_def.so.1 ]; then patchelf --add-needed libmkl_core.so.1 libmkl_def.so.1; fi"
-    COMMAND /bin/sh -c "if [ -f libmkl_avx2.so.1 ]; then patchelf --add-needed libmkl_gnu_thread.so.1 libmkl_avx2.so.1; fi"
-    COMMAND /bin/sh -c "if [ -f libmkl_avx2.so.1 ]; then patchelf --add-needed libmkl_core.so.1 libmkl_avx2.so.1; fi"
-    COMMAND /bin/sh -c "if [ -f libmkl_avx512.so.1 ]; then patchelf --add-needed libmkl_gnu_thread.so.1 libmkl_avx512.so.1; fi"
-    COMMAND /bin/sh -c "if [ -f libmkl_avx512.so.1 ]; then patchelf --add-needed libmkl_core.so.1 libmkl_avx512.so.1; fi"
-    COMMAND /bin/sh -c "if [ -f libmkl_vml_def.so.1 ]; then patchelf --add-needed libmkl_gnu_thread.so.1 libmkl_vml_def.so.1; fi"
-    COMMAND /bin/sh -c "if [ -f libmkl_vml_def.so.1 ]; then patchelf --add-needed libmkl_intel_thread.so.1 libmkl_vml_def.so.1; fi"
-    COMMAND /bin/sh -c "if [ -f libmkl_vml_def.so.1 ]; then patchelf --add-needed libmkl_core.so.1 libmkl_vml_def.so.1; fi"
-    COMMAND /bin/sh -c "if [ -f libmkl_intel_thread.so.1 ]; then patchelf --add-needed libmkl_intel_lp64.so.1 libmkl_intel_thread.so.1; fi"
+    COMMAND /bin/sh -c "if [ -f libmkl_def.so.2 ]; then patchelf --add-needed libmkl_gnu_thread.so.2 libmkl_def.so.2; fi"
+    COMMAND /bin/sh -c "if [ -f libmkl_def.so.2 ]; then patchelf --add-needed libmkl_core.so.2 libmkl_def.so.2; fi"
+    COMMAND /bin/sh -c "if [ -f libmkl_avx2.so.2 ]; then patchelf --add-needed libmkl_gnu_thread.so.2 libmkl_avx2.so.2; fi"
+    COMMAND /bin/sh -c "if [ -f libmkl_avx2.so.2 ]; then patchelf --add-needed libmkl_core.so.2 libmkl_avx2.so.2; fi"
+    COMMAND /bin/sh -c "if [ -f libmkl_avx512.so.2 ]; then patchelf --add-needed libmkl_gnu_thread.so.2 libmkl_avx512.so.2; fi"
+    COMMAND /bin/sh -c "if [ -f libmkl_avx512.so.2 ]; then patchelf --add-needed libmkl_core.so.2 libmkl_avx512.so.2; fi"
+    COMMAND /bin/sh -c "if [ -f libmkl_vml_def.so.2 ]; then patchelf --add-needed libmkl_gnu_thread.so.2 libmkl_vml_def.so.2; fi"
+    COMMAND /bin/sh -c "if [ -f libmkl_vml_def.so.2 ]; then patchelf --add-needed libmkl_intel_thread.so.2 libmkl_vml_def.so.2; fi"
+    COMMAND /bin/sh -c "if [ -f libmkl_vml_def.so.2 ]; then patchelf --add-needed libmkl_core.so.2 libmkl_vml_def.so.2; fi"
+    COMMAND /bin/sh -c "if [ -f libmkl_intel_thread.so.2 ]; then patchelf --add-needed libmkl_intel_lp64.so.2 libmkl_intel_thread.so.2; fi"
     COMMAND docker rm pytorch_backend_ptlib
     COMMENT "Extracting pytorch and torchvision libraries and includes from ${TRITON_PYTORCH_DOCKER_IMAGE}"
     VERBATIM
